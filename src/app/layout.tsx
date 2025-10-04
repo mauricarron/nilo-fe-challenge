@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins, Stick_No_Bills } from "next/font/google";
 import "./global.css";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,9 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${stickNoBills.variable} font-poppins antialiased`}
+        className={`${poppins.variable} ${stickNoBills.variable} font-poppins flex min-h-screen w-full flex-col items-center bg-gradient-to-r from-slate-200 to-white text-slate-900 antialiased`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

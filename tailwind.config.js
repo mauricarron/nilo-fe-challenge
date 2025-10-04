@@ -11,6 +11,8 @@ module.exports = {
         red: {
           550: "#DC2625",
         },
+        "brand-blue": "#275FBB",
+        "brand-purple": "#932482",
       },
       boxShadow: {
         button: "0px 4px 8px 0px #64748B40",
