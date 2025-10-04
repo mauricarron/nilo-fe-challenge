@@ -1,0 +1,22 @@
+.meter {
+  /* Base meter styles */
+  appearance: none !important;
+  @apply block h-1 w-full rounded-full;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.meter::-webkit-meter-bar {
+  background: none;
+  @apply h-1 rounded-full bg-slate-100;
+}
+
+.meter::-webkit-meter-optimum-value {
+  background: none;
+  @apply h-1 rounded-full bg-indigo-700;
+}
+
+/* Firefox */
+.meter::-moz-meter-bar {
+  background: none;
+  @apply h-1 rounded-full bg-indigo-700;
+}
