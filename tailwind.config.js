@@ -14,6 +14,8 @@ module.exports = {
       },
       boxShadow: {
         button: "0px 4px 8px 0px #64748B40",
+        "toggle-seen-on": "0px 4px 8px 0px #22C55D40",
+        "toggle-seen-off": "0px 4px 8px 0px #3B82F640",
       },
     },
     fontFamily: {
