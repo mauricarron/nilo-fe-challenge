@@ -8,7 +8,7 @@ export function SearchBar({
   ...props
 }: React.ComponentProps<"input">) {
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <MagnifyingGlassIcon className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 transform stroke-2 text-gray-400" />
       <input
         type="search"

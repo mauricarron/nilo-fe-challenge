@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 export function Header() {
   return (
-    <header className="fixed flex h-28 w-full items-center justify-between bg-slate-50 px-3 py-2 pb-4 md:px-7">
+    <header className="fixed z-50 flex h-32 w-full items-center justify-between bg-slate-50 px-3 py-2 pb-4 md:px-7">
       <Logo />
       <Button>
         <EyeIcon /> Seen (3)
