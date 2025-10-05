@@ -1,4 +1,4 @@
-import { PokemonList } from "@/components/pokemon-search/pokemon-list";
+import { PokemonSearch } from "@/components/pokemon-list/pokemon-search";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         </h2>
       </div>
 
-      <PokemonList />
+      <PokemonSearch />
     </main>
   );
 }
