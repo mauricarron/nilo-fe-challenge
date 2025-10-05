@@ -2,7 +2,9 @@
 const nextConfig = {
   experimental: {
     appDir: true,
+    typedRoutes: true,
   },
+
   images: {
     domains: [
       "raw.githubusercontent.com",
