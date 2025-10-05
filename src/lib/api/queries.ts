@@ -23,3 +23,29 @@ export const GET_ALL_POKEMON = gql(`
   }
 }
 `);
+
+export const GET_FUZZY_POKEMON = gql(`
+  query (
+  $offset: Int
+  $take: Int
+  $pokemon: String!
+) {
+  getFuzzyPokemon(
+    offset: $offset
+    take: $take
+    pokemon: $pokemon
+  ) {
+    key
+    baseStats {
+      attack
+      defense
+      hp
+    }
+    num
+    sprite
+    types {
+      name
+    }
+  }
+}
+`);

@@ -1,18 +1,40 @@
 import { useQuery } from "@apollo/client";
-import { GET_ALL_POKEMON } from "@/lib/api/queries";
+import { GET_ALL_POKEMON, GET_FUZZY_POKEMON } from "@/lib/api/queries";
 import type { Query } from "@favware/graphql-pokemon";
 
-export function useGetAllPokemon() {
-  const { data, loading, error } = useQuery<Query>(GET_ALL_POKEMON, {
+export function usePokemon(query: string = "") {
+  const hasQuery = query.trim().length > 0;
+  const OFFSET = 94; // skip all CAP Pokémon, PokéStar Pokémon, Missingno, and 'M (00)
+  const TAKE = 20;
+
+  const {
+    data: allPokemonData,
+    loading: loadingAllPokemon,
+    error: errorAllPokemon,
+  } = useQuery<Query>(GET_ALL_POKEMON, {
     variables: {
-      offset: 94, // skip all CAP Pokémon, PokéStar Pokémon, Missingno, and 'M (00)
-      take: 20,
+      offset: OFFSET,
+      take: TAKE,
     },
+    skip: hasQuery,
+  });
+
+  const {
+    data: fuzzyPokemonData,
+    loading: loadingFuzzyPokemon,
+    error: errorFuzzyPokemon,
+  } = useQuery<Query>(GET_FUZZY_POKEMON, {
+    variables: {
+      take: TAKE,
+      pokemon: query,
+    },
+    skip: !hasQuery,
   });
 
   return {
-    allPokemon: data?.getAllPokemon || [],
-    loading,
-    error,
+    pokemonList:
+      fuzzyPokemonData?.getFuzzyPokemon || allPokemonData?.getAllPokemon || [],
+    loading: loadingAllPokemon || loadingFuzzyPokemon,
+    error: errorAllPokemon || errorFuzzyPokemon,
   };
 }
