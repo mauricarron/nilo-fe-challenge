@@ -4,15 +4,17 @@ import { EyeIcon } from "@heroicons/react/24/outline";
 import { Logo } from "../brand/logo";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { useSeenPokemonStore } from "@/stores/seen-pokemon-store";
 
 export function Header() {
   const { push } = useRouter();
+  const { seenPokemon } = useSeenPokemonStore();
 
   return (
     <header className="fixed z-50 flex h-32 w-full items-center justify-between bg-slate-50 px-3 py-2 pb-4 md:px-7">
       <Logo />
       <Button onClick={() => push("/seen")}>
-        <EyeIcon /> Seen (3)
+        <EyeIcon /> Seen ({seenPokemon.length})
       </Button>
 
       {/* Border decoration */}
