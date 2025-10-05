@@ -7,9 +7,14 @@ export function PokemonList() {
       <SearchBar placeholder="Search for Pokémon by name..." />
       <p className="text-sm">Showing 70 Pokémon</p>
 
-      {/* pokemon grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
-      <PokemonCard />
+      <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+        <PokemonCard />
+      </div>
     </div>
   );
 }
