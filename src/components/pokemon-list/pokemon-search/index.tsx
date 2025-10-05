@@ -4,10 +4,21 @@ import { SearchBar } from "@/components/ui/search-bar";
 import { PokemonCard } from "@/components/pokemon-list/pokemon-card";
 import { usePokemon } from "@/hooks/pokemon-list";
 import { useDebounceValue } from "@/hooks/use-debounce";
+import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
 
 export function PokemonSearch() {
   const [search, setSearch] = useDebounceValue();
-  const { pokemonList } = usePokemon(search);
+  const { pokemonList, isLoading, fetchMore } = usePokemon(search);
+
+  const loaderRef = useInfiniteScroll(() => {
+    if (isLoading) return;
+
+    fetchMore({
+      variables: {
+        offset: pokemonList.length,
+      },
+    });
+  });
 
   return (
     <div className="flex w-full flex-col items-center gap-5">
@@ -22,6 +33,7 @@ export function PokemonSearch() {
           <PokemonCard key={pokemon.key} pokemon={pokemon} />
         ))}
       </div>
+      <div ref={loaderRef} className="bg-red h-10 w-full" />
     </div>
   );
 }
