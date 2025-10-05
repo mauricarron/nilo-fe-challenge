@@ -4,25 +4,26 @@ import { Meter } from "@/components/ui/meter";
 import { PokedexNumberBadge } from "@/components/ui/pokedex-number-badge";
 import { PokemonTypeBadge } from "@/components/ui/pokemon-type-badge";
 import { ToggleSeen } from "@/components/ui/toggle-seen";
+import { PokemonType } from "@favware/graphql-pokemon";
 import Image from "next/image";
 
-const mockData = {
-  key: "dragonair",
-  num: 148,
-  name: "Dragonair",
-  sprite: "https://play.pokemonshowdown.com/sprites/ani/dragonair.gif",
-  types: [{ name: "Dragon" }, { name: "Dragon" }, { name: "Dragon" }],
+export function PokemonCard({
+  name,
+  num,
+  sprite,
+  types,
+  baseStats,
+}: {
+  name: string;
+  num: number;
+  sprite: string;
+  types: readonly PokemonType[];
   baseStats: {
-    hp: 61,
-    attack: 84,
-    defense: 65,
-    specialattack: 70,
-    specialdefense: 70,
-    speed: 70,
-  },
-};
-
-export function PokemonCard() {
+    hp: number;
+    attack: number;
+    defense: number;
+  };
+}) {
   const isSeen = true;
 
   return (
@@ -36,28 +37,28 @@ export function PokemonCard() {
 
       <div className="relative size-32">
         <Image
-          src={mockData.sprite}
-          alt={mockData.name}
+          src={sprite}
+          alt={name}
           fill={true}
           sizes="100%"
           className="object-contain"
         />
       </div>
 
-      <PokedexNumberBadge>#{mockData.num}</PokedexNumberBadge>
+      <PokedexNumberBadge>#{num}</PokedexNumberBadge>
 
-      <p className="text-center font-semibold">{mockData.name}</p>
+      <p className="text-center font-semibold capitalize">{name}</p>
 
       <div className="flex flex-wrap items-center justify-center gap-3">
-        {mockData.types.map((type) => (
+        {types.map((type) => (
           <PokemonTypeBadge key={type.name}>{type.name}</PokemonTypeBadge>
         ))}
       </div>
 
       <div className="w-full space-y-5">
-        <BaseStat label="HP" value={mockData.baseStats.hp} />
-        <BaseStat label="Attack" value={mockData.baseStats.attack} />
-        <BaseStat label="Defense" value={mockData.baseStats.defense} />
+        <BaseStat label="HP" value={baseStats.hp} />
+        <BaseStat label="Attack" value={baseStats.attack} />
+        <BaseStat label="Defense" value={baseStats.defense} />
       </div>
 
       <Divider />

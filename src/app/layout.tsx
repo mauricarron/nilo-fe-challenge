@@ -3,6 +3,7 @@ import { Poppins, Stick_No_Bills } from "next/font/google";
 import "./global.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { AppProviders } from "@/components/providers/app-providers";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,12 +29,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} ${stickNoBills.variable} font-poppins flex min-h-screen w-full flex-col items-center bg-gradient-to-r from-slate-200 to-white text-slate-900 antialiased`}
-      >
-        <Header />
-        {children}
-        <Footer />
+      <body className={`${poppins.variable} ${stickNoBills.variable}`}>
+        <AppProviders>
+          <div className="flex min-h-screen w-full flex-col items-center bg-gradient-to-r from-slate-200 to-white font-poppins text-slate-900 antialiased">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </AppProviders>
       </body>
     </html>
   );
