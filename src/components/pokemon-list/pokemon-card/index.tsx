@@ -4,35 +4,24 @@ import { Meter } from "@/components/ui/meter";
 import { PokedexNumberBadge } from "@/components/ui/pokedex-number-badge";
 import { PokemonTypeBadge } from "@/components/ui/pokemon-type-badge";
 import { ToggleSeen } from "@/components/ui/toggle-seen";
-import { PokemonType } from "@favware/graphql-pokemon";
+import { useSeenPokemonStore } from "@/stores/seen-pokemon-store";
+import type { Pokemon } from "@/types/pokemon";
 import Image from "next/image";
 
-export function PokemonCard({
-  name,
-  num,
-  sprite,
-  types,
-  baseStats,
-}: {
-  name: string;
-  num: number;
-  sprite: string;
-  types: readonly PokemonType[];
-  baseStats: {
-    hp: number;
-    attack: number;
-    defense: number;
-  };
-}) {
-  const isSeen = true;
+export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
+  const { key: name, num, sprite, types, baseStats } = pokemon;
+  const { isSeenPokemon, toggleSeenPokemon } = useSeenPokemonStore();
 
   return (
     <div className="shadow-pokemon-card relative flex w-full flex-col items-center gap-5 rounded-xl bg-white p-3 pt-6">
-      {isSeen && (
+      {isSeenPokemon(name) && (
         <span className="absolute inset-x-0 top-0 h-3 rounded-t-xl bg-green-550"></span>
       )}
       <div className="absolute right-3 top-5">
-        <ToggleSeen />
+        <ToggleSeen
+          pressed={isSeenPokemon(name)}
+          onPressedChange={() => toggleSeenPokemon(pokemon)}
+        />
       </div>
 
       <div className="relative size-32">

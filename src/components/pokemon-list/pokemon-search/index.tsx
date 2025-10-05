@@ -14,14 +14,7 @@ export function PokemonSearch() {
 
       <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
         {allPokemon.map((pokemon) => (
-          <PokemonCard
-            key={pokemon.key}
-            name={pokemon.key}
-            num={pokemon.num}
-            sprite={pokemon.sprite}
-            types={pokemon.types}
-            baseStats={pokemon.baseStats}
-          />
+          <PokemonCard key={pokemon.key} pokemon={pokemon} />
         ))}
       </div>
     </div>
