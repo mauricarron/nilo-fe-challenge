@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Image from "next/image";
 import { Divider } from "@/components/ui/divider";
 import { Label } from "@/components/ui/label";
 import { Meter } from "@/components/ui/meter";
@@ -8,10 +10,10 @@ import { ToggleSeen } from "@/components/ui/toggle-seen";
 import { getPokemonTypeColor } from "@/lib/utils";
 import { useSeenPokemonStore } from "@/stores/seen-pokemon-store";
 import type { Pokemon } from "@/types/pokemon";
-import Image from "next/image";
 
 export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   const { key: name, num, sprite, types, baseStats } = pokemon;
+  const [imageSrc, setImageSrc] = useState(sprite);
   const { isSeenPokemon, toggleSeenPokemon } = useSeenPokemonStore();
 
   return (
@@ -36,12 +38,15 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
 
       <div className="relative size-32">
         <Image
-          src={sprite}
+          src={imageSrc}
           alt={name}
           fill={true}
           sizes="100%"
           className="object-contain"
           unoptimized
+          placeholder="blur"
+          blurDataURL="/assets/images/pokemon-placeholder.png"
+          onError={() => setImageSrc("/assets/images/pokemon-placeholder.png")}
         />
       </div>
 

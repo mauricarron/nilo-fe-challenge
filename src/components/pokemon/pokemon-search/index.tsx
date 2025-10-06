@@ -30,7 +30,9 @@ export function PokemonSearch() {
       <p className="text-sm">
         {isLoading
           ? "Searching for Pokémon..."
-          : `Showing ${pokemonList.length} Pokémon`}
+          : search.trim().length === 0
+            ? `Showing ${pokemonList.length} Pokémon`
+            : `Found ${pokemonList.length} Pokémon matching ¨${search}¨`}
       </p>
 
       <PokemonList
