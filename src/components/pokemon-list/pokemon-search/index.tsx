@@ -2,7 +2,7 @@
 
 import { SearchBar } from "@/components/ui/search-bar";
 import { PokemonCard } from "@/components/pokemon-list/pokemon-card";
-import { usePokemon } from "@/hooks/pokemon-list";
+import { INITIAL_OFFSET, usePokemon } from "@/hooks/pokemon-list";
 import { useDebounceValue } from "@/hooks/use-debounce";
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
 
@@ -15,7 +15,7 @@ export function PokemonSearch() {
 
     fetchMore({
       variables: {
-        offset: pokemonList.length,
+        offset: INITIAL_OFFSET + pokemonList.length,
       },
     });
   });

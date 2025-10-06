@@ -2,10 +2,11 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_POKEMON, GET_FUZZY_POKEMON } from "@/lib/api/queries";
 import type { Query } from "@favware/graphql-pokemon";
 
+export const INITIAL_OFFSET = 94; // skip all CAP Pokémon, PokéStar Pokémon, Missingno, and 'M (00)
+const TAKE = 15;
+
 export function usePokemon(query: string = "") {
   const hasQuery = query.trim().length > 0;
-  const OFFSET = 94; // skip all CAP Pokémon, PokéStar Pokémon, Missingno, and 'M (00)
-  const TAKE = 20;
 
   const {
     data: allPokemonData,
@@ -14,7 +15,7 @@ export function usePokemon(query: string = "") {
     fetchMore: fetchMorePokemon,
   } = useQuery<Query>(GET_ALL_POKEMON, {
     variables: {
-      offset: OFFSET,
+      offset: INITIAL_OFFSET,
       take: TAKE,
     },
     skip: hasQuery,
