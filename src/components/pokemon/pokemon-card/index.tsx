@@ -5,7 +5,7 @@ import { PokedexNumberBadge } from "@/components/ui/pokedex-number-badge";
 import { PokemonTypeBadge } from "@/components/ui/pokemon-type-badge";
 import { seenToast } from "@/components/ui/toast";
 import { ToggleSeen } from "@/components/ui/toggle-seen";
-import { cn, getPokemonTypeColor } from "@/lib/utils";
+import { getPokemonTypeColor } from "@/lib/utils";
 import { useSeenPokemonStore } from "@/stores/seen-pokemon-store";
 import type { Pokemon } from "@/types/pokemon";
 import Image from "next/image";

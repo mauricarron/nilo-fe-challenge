@@ -1,7 +1,7 @@
 "use client";
 
-import { EmptySeenPokemon } from "@/components/pokemon-list/empty-seen-pokemon";
-import { SeenPokemon } from "@/components/pokemon-list/seen-pokemon";
+import { EmptySeenPokemon } from "@/components/pokemon/empty-seen-pokemon";
+import { SeenPokemon } from "@/components/pokemon/seen-pokemon";
 import { useSeenPokemonStore } from "@/stores/seen-pokemon-store";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
