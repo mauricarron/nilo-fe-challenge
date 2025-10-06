@@ -8,6 +8,7 @@ import Link from "next/link";
 
 export default function SeenPage() {
   const { seenPokemon } = useSeenPokemonStore();
+  const sortedByLastSeenPokemon = [...seenPokemon].reverse();
 
   return (
     <main className="mt-32 flex w-full max-w-7xl grow flex-col items-center gap-5 p-3">
@@ -32,7 +33,7 @@ export default function SeenPage() {
             </h2>
           </div>
 
-          <SeenPokemon seenPokemon={seenPokemon} />
+          <SeenPokemon seenPokemon={sortedByLastSeenPokemon} />
         </>
       )}
     </main>
