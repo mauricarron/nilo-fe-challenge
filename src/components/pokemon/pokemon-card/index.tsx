@@ -41,6 +41,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
           fill={true}
           sizes="100%"
           className="object-contain"
+          unoptimized
         />
       </div>
 

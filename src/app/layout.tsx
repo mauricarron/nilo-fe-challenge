@@ -42,7 +42,7 @@ export default function RootLayout({
           <Toaster
             position="top-center"
             offset={{ top: TOASTER_TOP_OFFSET }}
-            duration={60000}
+            duration={3000}
           />
         </AppProviders>
       </body>

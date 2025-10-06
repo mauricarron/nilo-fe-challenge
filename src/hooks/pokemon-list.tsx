@@ -12,6 +12,7 @@ export function usePokemon(query: string = "") {
     data: allPokemonData,
     loading: loadingAllPokemon,
     error: errorAllPokemon,
+    refetch: refetchAllPokemon,
     fetchMore: fetchMorePokemon,
   } = useQuery<Query>(GET_ALL_POKEMON, {
     variables: {
@@ -25,6 +26,7 @@ export function usePokemon(query: string = "") {
     data: fuzzyPokemonData,
     loading: loadingFuzzyPokemon,
     error: errorFuzzyPokemon,
+    refetch: refetchFuzzyPokemon,
     fetchMore: fetchMoreFuzzyPokemon,
   } = useQuery<Query>(GET_FUZZY_POKEMON, {
     variables: {
@@ -38,7 +40,8 @@ export function usePokemon(query: string = "") {
     pokemonList:
       fuzzyPokemonData?.getFuzzyPokemon || allPokemonData?.getAllPokemon || [],
     isLoading: loadingAllPokemon || loadingFuzzyPokemon,
-    error: errorAllPokemon || errorFuzzyPokemon,
+    hasError: Boolean(errorAllPokemon || errorFuzzyPokemon),
+    refetch: hasQuery ? refetchFuzzyPokemon : refetchAllPokemon,
     fetchMore: hasQuery ? fetchMoreFuzzyPokemon : fetchMorePokemon,
   };
 }
