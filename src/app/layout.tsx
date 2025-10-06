@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Stick_No_Bills } from "next/font/google";
 import "./global.css";
+import { Toaster } from "sonner";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { AppProviders } from "@/components/providers/app-providers";
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
   description: "Technical challenge for Nilo",
 };
 
+const TOASTER_TOP_OFFSET = 128; // match header height
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +39,11 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+          <Toaster
+            position="top-center"
+            offset={{ top: TOASTER_TOP_OFFSET }}
+            duration={60000}
+          />
         </AppProviders>
       </body>
     </html>
