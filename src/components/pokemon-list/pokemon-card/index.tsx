@@ -5,6 +5,7 @@ import { PokedexNumberBadge } from "@/components/ui/pokedex-number-badge";
 import { PokemonTypeBadge } from "@/components/ui/pokemon-type-badge";
 import { seenToast } from "@/components/ui/toast";
 import { ToggleSeen } from "@/components/ui/toggle-seen";
+import { cn, getPokemonTypeColor } from "@/lib/utils";
 import { useSeenPokemonStore } from "@/stores/seen-pokemon-store";
 import type { Pokemon } from "@/types/pokemon";
 import Image from "next/image";
@@ -49,7 +50,12 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
 
       <div className="flex flex-wrap items-center justify-center gap-3">
         {types.map((type) => (
-          <PokemonTypeBadge key={type.name}>{type.name}</PokemonTypeBadge>
+          <PokemonTypeBadge
+            key={type.name}
+            className={getPokemonTypeColor(type.name)}
+          >
+            {type.name}
+          </PokemonTypeBadge>
         ))}
       </div>
 

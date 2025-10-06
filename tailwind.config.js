@@ -11,6 +11,9 @@ module.exports = {
         red: {
           550: "#DC2625",
         },
+        orange: {
+          550: "#F08030",
+        },
         "brand-blue": "#275FBB",
         "brand-purple": "#932482",
       },
