@@ -3,7 +3,7 @@ import { GET_ALL_POKEMON, GET_FUZZY_POKEMON } from "@/lib/api/queries";
 import type { Query } from "@favware/graphql-pokemon";
 
 export const INITIAL_OFFSET = 94; // skip all CAP Pokémon, PokéStar Pokémon, Missingno, and 'M (00)
-const TAKE = 10;
+const TAKE = 15;
 
 /**
  * A React hook that fetches Pokemon data with support for both general listing and fuzzy search.
