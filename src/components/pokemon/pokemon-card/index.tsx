@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Divider } from "@/components/ui/divider";
-import { Label } from "@/components/ui/label";
 import { Meter } from "@/components/ui/meter";
 import { PokedexNumberBadge } from "@/components/ui/pokedex-number-badge";
 import { PokemonTypeBadge } from "@/components/ui/pokemon-type-badge";
@@ -74,7 +73,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
       <Divider />
 
       <div className="flex w-full items-baseline justify-between text-xs text-gray-500">
-        <Label className="font-semibold">Gen</Label>
+        <span className="font-semibold">Gen</span>
         <p className="uppercase">ZU</p>
       </div>
     </div>
@@ -93,7 +92,7 @@ function BaseStat({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-baseline justify-between text-xs leading-none">
-        <Label>{label}</Label>
+        <span className="text-xs text-gray-500">{label}</span>
         <span className="font-semibold">{value}</span>
       </div>
       <Meter value={value} max={max} />
