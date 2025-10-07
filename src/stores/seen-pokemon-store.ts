@@ -9,6 +9,12 @@ interface SeenPokemonStore {
   clearSeenPokemon: () => void;
 }
 
+/**
+ * A Zustand store that manages the user's seen Pokemon list with persistence.
+ * Stores Pokemon that the user has marked as "seen" and provides functions to toggle, check, and clear the list.
+ *
+ * @returns Store object containing seenPokemon array and management functions (toggleSeenPokemon, isSeenPokemon, clearSeenPokemon)
+ */
 export const useSeenPokemonStore = create<SeenPokemonStore>()(
   persist(
     (set, get) => ({

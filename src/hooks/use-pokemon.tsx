@@ -5,6 +5,13 @@ import type { Query } from "@favware/graphql-pokemon";
 export const INITIAL_OFFSET = 94; // skip all CAP Pokémon, PokéStar Pokémon, Missingno, and 'M (00)
 const TAKE = 10;
 
+/**
+ * A React hook that fetches Pokemon data with support for both general listing and fuzzy search.
+ * Automatically switches between getAllPokemon and getFuzzyPokemon queries based on search input.
+ *
+ * @param query - Optional search query string. When empty, returns all Pokemon; when provided, performs fuzzy search
+ * @returns Object containing pokemonList, loading state, error state, refetch function, and fetchMore function
+ */
 export function usePokemon(query: string = "") {
   const hasQuery = query.trim().length > 0;
 
