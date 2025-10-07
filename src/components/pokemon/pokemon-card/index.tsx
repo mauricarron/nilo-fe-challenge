@@ -66,7 +66,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
       </div>
 
       <div className="w-full space-y-5">
-        <BaseStat label="HP" value={baseStats.hp} />
+        <BaseStat label="HP" value={baseStats.hp} max={150} />
         <BaseStat label="Attack" value={baseStats.attack} />
         <BaseStat label="Defense" value={baseStats.defense} />
       </div>
@@ -81,14 +81,22 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   );
 }
 
-function BaseStat({ label, value }: { label: string; value: number }) {
+function BaseStat({
+  label,
+  value,
+  max = 100,
+}: {
+  label: string;
+  value: number;
+  max?: number;
+}) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-baseline justify-between text-xs leading-none">
         <Label>{label}</Label>
         <span className="font-semibold">{value}</span>
       </div>
-      <Meter value={value} max={255} />
+      <Meter value={value} max={max} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
+import "./global.css";
 import type { Metadata } from "next";
 import { Poppins, Stick_No_Bills } from "next/font/google";
-import "./global.css";
 import { Toaster } from "sonner";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -41,8 +41,9 @@ export default function RootLayout({
           </div>
           <Toaster
             position="top-center"
-            offset={{ top: TOASTER_TOP_OFFSET }}
             duration={3000}
+            offset={{ top: TOASTER_TOP_OFFSET }}
+            mobileOffset={{ top: TOASTER_TOP_OFFSET }}
           />
         </AppProviders>
       </body>

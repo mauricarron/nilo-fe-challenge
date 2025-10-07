@@ -1,10 +1,10 @@
 "use client";
 
 import { SearchBar } from "@/components/ui/search-bar";
-import { INITIAL_OFFSET, usePokemon } from "@/hooks/pokemon-list";
+import { INITIAL_OFFSET, usePokemon } from "@/hooks/use-pokemon";
 import { useDebounceValue } from "@/hooks/use-debounce";
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
-import { PokemonList } from "../pokemon-list";
+import { PokemonList } from "@/components/pokemon/pokemon-list";
 
 export function PokemonSearch() {
   const [search, setSearch] = useDebounceValue();
@@ -24,6 +24,8 @@ export function PokemonSearch() {
   return (
     <div className="flex w-full grow flex-col items-center gap-5">
       <SearchBar
+        name="pokemon-search"
+        id="pokemon-search"
         placeholder="Search for Pokémon by name..."
         onChange={(e) => setSearch(e.target.value)}
       />

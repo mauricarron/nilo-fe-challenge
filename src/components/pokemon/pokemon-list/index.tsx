@@ -1,8 +1,8 @@
 import { Pokemon } from "@/types/pokemon";
-import { PokemonCard } from "../pokemon-card";
 import { PokemonCardSkeleton } from "@/components/layout/pokemon-card-skeleton";
 import { ErrorWithRecovery } from "@/components/layout/error-with-recovery";
-import { EmptyPokemon } from "../empty-pokemon";
+import { PokemonCard } from "@/components/pokemon/pokemon-card";
+import { EmptyPokemon } from "@/components/pokemon/empty-pokemon";
 
 export function PokemonList({
   pokemonList,

@@ -1,15 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
     typedRoutes: true,
   },
-
   images: {
-    domains: [
-      "raw.githubusercontent.com",
-      "archives.bulbagarden.net",
-      "play.pokemonshowdown.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "archives.bulbagarden.net",
+      },
+      {
+        protocol: "https",
+        hostname: "play.pokemonshowdown.com",
+      },
     ],
     unoptimized: false,
   },
