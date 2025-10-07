@@ -1,17 +1,21 @@
 "use client";
 
-import { SearchBar } from "@/components/ui/search-bar";
+import { useState, useCallback } from "react";
+import { PokemonSearchBar } from "@/components/pokemon/pokemon-search-bar";
 import { INITIAL_OFFSET, usePokemon } from "@/hooks/use-pokemon";
-import { useDebounceValue } from "@/hooks/use-debounce";
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
 import { PokemonList } from "@/components/pokemon/pokemon-list";
 
 export function PokemonSearch() {
-  const [search, setSearch] = useDebounceValue();
+  const [search, setSearch] = useState("");
   const { pokemonList, isLoading, fetchMore, hasError, refetch } =
     usePokemon(search);
 
-  const loaderRef = useInfiniteScroll(() => {
+  const handleSearch = (value: string) => {
+    setSearch(value);
+  };
+
+  const handleFetchMore = useCallback(() => {
     if (isLoading || hasError) return;
 
     fetchMore({
@@ -19,16 +23,13 @@ export function PokemonSearch() {
         offset: INITIAL_OFFSET + pokemonList.length,
       },
     });
-  });
+  }, [isLoading, hasError, fetchMore, pokemonList.length]);
+
+  const loaderRef = useInfiniteScroll(handleFetchMore);
 
   return (
     <div className="flex w-full grow flex-col items-center gap-5">
-      <SearchBar
-        name="pokemon-search"
-        id="pokemon-search"
-        placeholder="Search for Pokémon by name..."
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <PokemonSearchBar onSearchChange={handleSearch} />
       <p className="text-sm">
         {isLoading
           ? "Searching for Pokémon..."
